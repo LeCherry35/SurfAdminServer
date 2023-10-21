@@ -2,12 +2,13 @@ const userModel = require('../models/user-model')
 const bcrypt = require('bcrypt')
 const tokenService = require('./token-service')
 const UserDto = require('../dtos/user-dto')
+const ApiError = require('../exceptions/api-error')
 
 class UserService {
     async registration(email, password) {
         const candidate = await userModel.findOne({email})
         if (candidate) {
-                throw new Error(`user with email ${email} already exists`)
+                throw ApiError.BadRequest(`user with email ${email} already exists`)
             }
             
             const hashPassword = await bcrypt.hash(password, 3)
