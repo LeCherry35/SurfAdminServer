@@ -43,6 +43,11 @@ class UserService {
             user: userDto
         }
     }
+
+    async logout(email) {
+        const token = await tokenService.removeToken
+        return token
+    }
 }
 
 module.exports = new UserService()
