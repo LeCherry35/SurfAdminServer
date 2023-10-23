@@ -13,7 +13,10 @@ router.post('/registration',
     jsonParser, 
     userController.registration
 )
-router.post('/login', userController.login)
+router.post('/login', 
+    jsonParser, 
+    userController.login
+)
 router.post('/logout', userController.logout)
 router.get('/refresh', userController.refresh)
 
