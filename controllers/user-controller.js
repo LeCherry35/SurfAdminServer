@@ -41,7 +41,6 @@ class UserController{
 
     async logout(req, res, next) {
         try {
-            console.log('####====', req.cookies);
             const {refreshToken} = req.cookies
             const token = await userService.logout(refreshToken)
             res.clearCookie('refreshToken')
@@ -63,7 +62,9 @@ class UserController{
 
     async getUsers(req, res, next) {
         try {
-            res.json(['123', '456'])
+
+            const users = await userService.getUsers()
+            return res.json(users)
         } catch(e) {
             next(e)
         }
