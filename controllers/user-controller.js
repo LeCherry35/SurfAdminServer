@@ -8,7 +8,6 @@ class UserController{
     async registration(req, res, next) {
         try {
             const errors = validationResult(req)
-            console.log('#$%', errors);
             if(!errors.isEmpty()) {
                 return next(ApiError.BadRequest('Validation error', errors.array()))
             }
@@ -52,7 +51,6 @@ class UserController{
 
     async refresh(req, res, next) {
         try {
-        console.log('$$%%', req.cookies);
 
             const { refreshToken } = req.cookies
 
